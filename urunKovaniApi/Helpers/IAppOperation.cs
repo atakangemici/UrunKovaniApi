@@ -9,8 +9,8 @@ namespace urunKovaniApi.Helpers
 {
     public interface IAppOperation
     {
-        
 
+        string Test();
 
     }
 }

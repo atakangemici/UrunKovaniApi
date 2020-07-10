@@ -36,5 +36,13 @@ namespace urunKovaniApi.Controllers
 
         }
 
+        [Route("test"), HttpGet]
+        public string GetValue()
+        {
+            var getValue = _appOperation.Test();
+
+            return getValue;
+        }
+
     }
 }

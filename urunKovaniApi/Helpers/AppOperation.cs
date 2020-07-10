@@ -17,7 +17,7 @@ namespace urunKovaniApi.Helpers
             _dbContext = dbContext;
         }
 
-        public string test()
+        public string Test()
         {
             return "test";
         }
