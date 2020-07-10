@@ -26,7 +26,7 @@ namespace urunKovaniApi.Models
         [Column("min_order_price")]
         public double MinOrderPrice { get; set; }
 
-        public virtual ShopCategory ShopCategory { get; set; }
+        public virtual ShopCategories ShopCategory { get; set; }
         public virtual List<Categories> Categorie { get; set; }
 
     }

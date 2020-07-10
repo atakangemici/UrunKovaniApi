@@ -10,7 +10,7 @@ using urunKovaniApi;
 namespace urunKovaniApi.Migrations
 {
     [DbContext(typeof(UrunKovaniContext))]
-    [Migration("20200710091126_initial2")]
+    [Migration("20200710135835_initial2")]
     partial class initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -235,10 +235,10 @@ namespace urunKovaniApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EmployeeUserteriUser");
+                    b.ToTable("EmployeeUser");
                 });
 
-            modelBuilder.Entity("urunKovaniApi.Models.Order", b =>
+            modelBuilder.Entity("urunKovaniApi.Models.Orders", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -280,7 +280,7 @@ namespace urunKovaniApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("urunKovaniApi.Models.Products", b =>
@@ -326,7 +326,7 @@ namespace urunKovaniApi.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("urunKovaniApi.Models.ShopCategory", b =>
+            modelBuilder.Entity("urunKovaniApi.Models.ShopCategories", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -353,7 +353,7 @@ namespace urunKovaniApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ShopCategory");
+                    b.ToTable("ShopCategories");
                 });
 
             modelBuilder.Entity("urunKovaniApi.Models.Shops", b =>
@@ -423,7 +423,7 @@ namespace urunKovaniApi.Migrations
 
             modelBuilder.Entity("urunKovaniApi.Models.Shops", b =>
                 {
-                    b.HasOne("urunKovaniApi.Models.ShopCategory", "ShopCategory")
+                    b.HasOne("urunKovaniApi.Models.ShopCategories", "ShopCategory")
                         .WithMany("Shops")
                         .HasForeignKey("ShopCategoryId");
                 });

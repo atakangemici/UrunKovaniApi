@@ -184,18 +184,17 @@ namespace urunKovaniApi.Migrations
                     updated_at = table.Column<DateTime>(nullable: true),
                     deleted = table.Column<bool>(nullable: false),
                     category_name = table.Column<string>(nullable: true),
-                    ShopId = table.Column<int>(nullable: false),
-                    shopId = table.Column<int>(nullable: true)
+                    ShopId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Categories_Shops_shopId",
-                        column: x => x.shopId,
+                        name: "FK_Categories_Shops_ShopId",
+                        column: x => x.ShopId,
                         principalTable: "Shops",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -227,9 +226,9 @@ namespace urunKovaniApi.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_shopId",
+                name: "IX_Categories_ShopId",
                 table: "Categories",
-                column: "shopId");
+                column: "ShopId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",

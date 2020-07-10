@@ -6,7 +6,7 @@ using System.Web;
 
 namespace urunKovaniApi.Models
 {
-    public class AdminUser : BaseEntity
+    public class AdminUsers : BaseEntity
     {
         [Column("name")]
         public string Name { get; set; }

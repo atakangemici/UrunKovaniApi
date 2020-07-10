@@ -6,7 +6,7 @@ using System.Web;
 
 namespace urunKovaniApi.Models
 {
-    public class ShopCategory : BaseEntity
+    public class ShopCategories : BaseEntity
     {
         [Column("category_name")]
         public string CategoryName { get; set; }

@@ -10,8 +10,8 @@ using urunKovaniApi;
 namespace urunKovaniApi.Migrations
 {
     [DbContext(typeof(UrunKovaniContext))]
-    [Migration("20200710090931_initial")]
-    partial class initial
+    [Migration("20200710135945_initial3")]
+    partial class initial3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace urunKovaniApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("urunKovaniApi.Models.AdminUser", b =>
+            modelBuilder.Entity("urunKovaniApi.Models.AdminUsers", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace urunKovaniApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AdminUser");
+                    b.ToTable("AdminUsers");
                 });
 
             modelBuilder.Entity("urunKovaniApi.Models.Basket", b =>
@@ -150,11 +150,9 @@ namespace urunKovaniApi.Migrations
                     b.Property<int?>("UpdatedById")
                         .HasColumnName("updated_by");
 
-                    b.Property<int?>("shopId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("shopId");
+                    b.HasIndex("ShopId");
 
                     b.ToTable("Categories");
                 });
@@ -195,52 +193,7 @@ namespace urunKovaniApi.Migrations
                     b.ToTable("Complaints");
                 });
 
-            modelBuilder.Entity("urunKovaniApi.Models.EmployeeUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("id")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnName("address");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnName("created_at");
-
-                    b.Property<int?>("CreatedById")
-                        .HasColumnName("created_by");
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnName("deleted");
-
-                    b.Property<string>("Email")
-                        .HasColumnName("email");
-
-                    b.Property<string>("Name")
-                        .HasColumnName("name");
-
-                    b.Property<string>("Password")
-                        .HasColumnName("password");
-
-                    b.Property<string>("Phone")
-                        .HasColumnName("phone");
-
-                    b.Property<string>("SureName")
-                        .HasColumnName("surename");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnName("updated_at");
-
-                    b.Property<int?>("UpdatedById")
-                        .HasColumnName("updated_by");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EmployeeUserteriUser");
-                });
-
-            modelBuilder.Entity("urunKovaniApi.Models.Order", b =>
+            modelBuilder.Entity("urunKovaniApi.Models.Orders", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -282,7 +235,7 @@ namespace urunKovaniApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("urunKovaniApi.Models.Products", b =>
@@ -328,7 +281,7 @@ namespace urunKovaniApi.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("urunKovaniApi.Models.ShopCategory", b =>
+            modelBuilder.Entity("urunKovaniApi.Models.ShopCategories", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -355,7 +308,7 @@ namespace urunKovaniApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ShopCategory");
+                    b.ToTable("ShopCategories");
                 });
 
             modelBuilder.Entity("urunKovaniApi.Models.Shops", b =>
@@ -407,11 +360,57 @@ namespace urunKovaniApi.Migrations
                     b.ToTable("Shops");
                 });
 
+            modelBuilder.Entity("urunKovaniApi.Models.Users", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnName("address");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnName("created_at");
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnName("created_by");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnName("deleted");
+
+                    b.Property<string>("Email")
+                        .HasColumnName("email");
+
+                    b.Property<string>("Name")
+                        .HasColumnName("name");
+
+                    b.Property<string>("Password")
+                        .HasColumnName("password");
+
+                    b.Property<string>("Phone")
+                        .HasColumnName("phone");
+
+                    b.Property<string>("SureName")
+                        .HasColumnName("surename");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnName("updated_at");
+
+                    b.Property<int?>("UpdatedById")
+                        .HasColumnName("updated_by");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("urunKovaniApi.Models.Categories", b =>
                 {
                     b.HasOne("urunKovaniApi.Models.Shops", "Shop")
                         .WithMany("Categorie")
-                        .HasForeignKey("shopId");
+                        .HasForeignKey("ShopId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("urunKovaniApi.Models.Products", b =>
@@ -424,7 +423,7 @@ namespace urunKovaniApi.Migrations
 
             modelBuilder.Entity("urunKovaniApi.Models.Shops", b =>
                 {
-                    b.HasOne("urunKovaniApi.Models.ShopCategory", "ShopCategory")
+                    b.HasOne("urunKovaniApi.Models.ShopCategories", "ShopCategory")
                         .WithMany("Shops")
                         .HasForeignKey("ShopCategoryId");
                 });
