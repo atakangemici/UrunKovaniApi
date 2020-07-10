@@ -13,7 +13,7 @@ namespace urunKovaniApi.Models
 
         public int ShopId { get; set; }
 
-        [ForeignKey("shopId")]
+        [ForeignKey("ShopId")]
         public Shops Shop { get; set; }
 
         public List<Products> Product { get; set; }
