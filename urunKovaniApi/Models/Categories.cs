@@ -7,17 +7,17 @@ using System.Web;
 
 namespace Esnafim.Models
 {
-    public class Kategoriler : BaseEntity
+    public class Categories : BaseEntity
     {
         [Column("category_name")]
         public string CategoryName { get; set; }
 
-        public int DukkanId { get; set; }
+        public int ShopId { get; set; }
 
         [ForeignKey("shopId")]
         public Shops Shop { get; set; }
 
-        public List<Urunler> Urun { get; set; }
+        public List<Products> Product { get; set; }
 
 
     }

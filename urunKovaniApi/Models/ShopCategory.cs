@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Esnafim.Models
 {
-    public class DukkanKategori : BaseEntity
+    public class ShopCategory : BaseEntity
     {
         [Column("category_name")]
         public string CategoryName { get; set; }

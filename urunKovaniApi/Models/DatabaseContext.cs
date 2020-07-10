@@ -7,16 +7,16 @@ namespace Esnafim
     public class EsnafimContext : DbContext
     {
         public DbSet<Shops> Shops { get; set; }
-        public DbSet<EsnafUser> EsnafUser { get; set; }
-        public DbSet<Kategoriler> Kategoriler { get; set; }
-        public DbSet<MusteriUser> MusteriUser { get; set; }
-        public DbSet<Sikayetler> Sikayetler { get; set; }
-        public DbSet<Sepet> Sepet { get; set; }
-        public DbSet<Siparis> Siparis { get; set; }
-        public DbSet<Urunler> Urunler { get; set; }
-        public DbSet<DukkanKategori> DukkanKategori { get; set; }
+        public DbSet<AdminUser> AdminUser { get; set; }
+        public DbSet<Categories> Categories { get; set; }
+        public DbSet<EmployeeUser> EmployeeUserteriUser { get; set; }
+        public DbSet<Complaints> Complaints { get; set; }
+        public DbSet<Basket> Basket { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<Products> Products { get; set; }
+        public DbSet<ShopCategory> ShopCategory { get; set; }
 
-        public EsnafimContext(DbContextOptions<EsnafimContext> options) : base(options)
+        public UrunKovaniContext(DbContextOptions<UrunKovaniContext> options) : base(options)
         {
 
         }
