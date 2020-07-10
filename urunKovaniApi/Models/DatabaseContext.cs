@@ -1,10 +1,10 @@
-﻿using Esnafim.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
+using urunKovaniApi.Models;
 
-namespace Esnafim
+namespace urunKovaniApi
 {
-    public class EsnafimContext : DbContext
+    public class UrunKovaniContext : DbContext
     {
         public DbSet<Shops> Shops { get; set; }
         public DbSet<AdminUser> AdminUser { get; set; }

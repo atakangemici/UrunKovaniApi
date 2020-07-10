@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Esnafim.Models
+namespace urunKovaniApi.Models
 {
     public class BaseEntity
     {
