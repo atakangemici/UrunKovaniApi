@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using urunKovaniApi;
+using urunKovaniApi.Models;
 
 namespace urunKovaniApi.Helpers
 {
@@ -20,6 +21,13 @@ namespace urunKovaniApi.Helpers
         public string Test()
         {
             return "test";
+        }
+
+        public async Task<List<Categories>> BaseMenu(int id)
+        {
+            var getMenu = await _dbContext.Categories.Where(x => x.ShopId == id).ToListAsync();
+
+            return getMenu;
         }
     }
 }

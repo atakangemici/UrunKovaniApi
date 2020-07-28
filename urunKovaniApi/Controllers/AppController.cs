@@ -15,6 +15,7 @@ using System.Text;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using urunKovaniApi.Helpers;
+using urunKovaniApi.Models;
 
 namespace urunKovaniApi.Controllers
 {
@@ -40,6 +41,14 @@ namespace urunKovaniApi.Controllers
         public string GetValue()
         {
             var getValue = _appOperation.Test();
+
+            return getValue;
+        }
+
+        [Route("base_menu/{id:int}"), HttpGet]
+        public async Task<List<Categories>> BaseMenu(int id)
+        {
+            var getValue = await _appOperation.BaseMenu(id);
 
             return getValue;
         }

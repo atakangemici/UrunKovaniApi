@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using urunKovaniApi.Models;
 
 namespace urunKovaniApi.Helpers
 {
@@ -11,6 +12,7 @@ namespace urunKovaniApi.Helpers
     {
 
         string Test();
+        Task<List<Categories>> BaseMenu(int id);
 
     }
 }

@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using urunKovaniApi.Helpers;
 
 namespace urunKovaniApi
@@ -27,6 +29,35 @@ namespace urunKovaniApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                            .SetIsOriginAllowed(_ => true)
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials();
+                    });
+            });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+
+             .AddJsonOptions(opt =>
+             {
+                 opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                 opt.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.None;
+                 opt.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                 opt.SerializerSettings.DateParseHandling = DateParseHandling.None;
+                 opt.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+
+                 opt.SerializerSettings.ContractResolver = new DefaultContractResolver
+                 {
+                     NamingStrategy = new SnakeCaseNamingStrategy(),
+                 };
+             });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<UrunKovaniContext>(options =>
@@ -48,6 +79,7 @@ namespace urunKovaniApi
                 app.UseHsts();
             }
 
+            app.UseCors("AllowAll");
             app.UseHttpsRedirection();
             app.UseMvc();
         }
