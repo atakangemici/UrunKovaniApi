@@ -25,9 +25,9 @@ namespace urunKovaniApi.Helpers
 
         public async Task<List<Categories>> BaseMenu(int id)
         {
-            var getMenu = await _dbContext.Categories.Where(x => x.ShopId == id).ToListAsync();
+            var getMenus = await _dbContext.Categories.Where(x => x.ShopId == id).ToListAsync();
 
-            return getMenu;
+            return getMenus;
         }
     }
 }

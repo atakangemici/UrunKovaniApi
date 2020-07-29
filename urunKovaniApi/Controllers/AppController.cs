@@ -48,9 +48,9 @@ namespace urunKovaniApi.Controllers
         [Route("base_menu/{id:int}"), HttpGet]
         public async Task<List<Categories>> BaseMenu(int id)
         {
-            var getValue = await _appOperation.BaseMenu(id);
+            var getMenus = await _appOperation.BaseMenu(id);
 
-            return getValue;
+            return getMenus;
         }
 
     }
