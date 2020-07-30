@@ -12,6 +12,9 @@ namespace urunKovaniApi.Models
         [Column("id"), Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Column("owner")]
+        public int? Owner { get; set; }
+
         [Column("created_by")]
         public int? CreatedById { get; set; }
 

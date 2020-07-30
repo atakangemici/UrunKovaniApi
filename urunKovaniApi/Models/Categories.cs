@@ -13,6 +13,9 @@ namespace urunKovaniApi.Models
 
         public int ShopId { get; set; }
 
+        [Column("url")]
+        public string Url { get; set; }
+
         [ForeignKey("ShopId")]
         public Shops Shop { get; set; }
 
