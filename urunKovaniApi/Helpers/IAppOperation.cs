@@ -10,9 +10,10 @@ namespace urunKovaniApi.Helpers
 {
     public interface IAppOperation
     {
+        Task<List<Categories>> SideMenu(int id);
 
-        string Test();
-        Task<List<Categories>> BaseMenu(int id);
+        Task<List<Categories>> MainMenu(int id);
+
 
     }
 }

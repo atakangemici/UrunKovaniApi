@@ -18,16 +18,18 @@ namespace urunKovaniApi.Helpers
             _dbContext = dbContext;
         }
 
-        public string Test()
+        public async Task<List<Categories>> SideMenu(int id)
         {
-            return "test";
+            var sideMenus = await _dbContext.Categories.Where(x => x.ShopId == id).ToListAsync();
+
+            return sideMenus;
         }
 
-        public async Task<List<Categories>> BaseMenu(int id)
+        public async Task<List<Categories>> MainMenu(int id)
         {
-            var getMenus = await _dbContext.Categories.Where(x => x.ShopId == id).ToListAsync();
+            var mainMenu = await _dbContext.Categories.Where(x => x.ShopId == id).ToListAsync();
 
-            return getMenus;
+            return mainMenu;
         }
     }
 }

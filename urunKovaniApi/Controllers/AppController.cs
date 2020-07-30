@@ -37,20 +37,20 @@ namespace urunKovaniApi.Controllers
 
         }
 
-        [Route("test"), HttpGet]
-        public string GetValue()
+        [Route("side_menu/{id:int}"), HttpGet]
+        public async Task<List<Categories>> SideMenu(int id)
         {
-            var getValue = _appOperation.Test();
+            var sideMenu = await _appOperation.SideMenu(id);
 
-            return getValue;
+            return sideMenu;
         }
 
-        [Route("base_menu/{id:int}"), HttpGet]
-        public async Task<List<Categories>> BaseMenu(int id)
+        [Route("main_menu/{id:int}"), HttpGet]
+        public async Task<List<Categories>> MainMenu(int id)
         {
-            var getMenus = await _appOperation.BaseMenu(id);
+            var mainMenu = await _appOperation.MainMenu(id);
 
-            return getMenus;
+            return mainMenu;
         }
 
     }
