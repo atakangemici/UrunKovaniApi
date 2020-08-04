@@ -53,5 +53,13 @@ namespace urunKovaniApi.Controllers
             return mainMenu;
         }
 
+        [Route("app_settings/{id:int}"), HttpGet]
+        public async Task<List<AppSettings>> AppSettings(int id)
+        {
+            var appSettings = await _appOperation.AppSettings(id);
+
+            return appSettings;
+        }
+
     }
 }

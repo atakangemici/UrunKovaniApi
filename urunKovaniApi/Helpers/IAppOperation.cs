@@ -13,6 +13,7 @@ namespace urunKovaniApi.Helpers
         Task<List<Categories>> SideMenu(int id);
 
         Task<List<Categories>> MainMenu(int id);
+        Task<List<AppSettings>> AppSettings(int id);
 
 
     }

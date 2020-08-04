@@ -31,5 +31,12 @@ namespace urunKovaniApi.Helpers
 
             return mainMenu;
         }
+
+        public async Task<List<AppSettings>> AppSettings(int id)
+        {
+            var appSettings = await _dbContext.AppSettings.Where(x => x.Key == id).ToListAsync();
+
+            return appSettings;
+        }
     }
 }
