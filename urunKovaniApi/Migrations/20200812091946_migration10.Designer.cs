@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using urunKovaniApi;
 
 namespace urunKovaniApi.Migrations
 {
     [DbContext(typeof(UrunKovaniContext))]
-    partial class UrunKovaniContextModelSnapshot : ModelSnapshot
+    [Migration("20200812091946_migration10")]
+    partial class migration10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

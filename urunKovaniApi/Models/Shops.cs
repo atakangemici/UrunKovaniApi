@@ -26,6 +26,13 @@ namespace urunKovaniApi.Models
         [Column("min_order_price")]
         public double MinOrderPrice { get; set; }
 
+        [Column("top_stores")]
+        public bool TopStores { get; set; }
+
+        [Column("image")]
+        public string Image { get; set; }
+
+
         public virtual ShopCategories ShopCategory { get; set; }
         public virtual List<Categories> Categorie { get; set; }
 
