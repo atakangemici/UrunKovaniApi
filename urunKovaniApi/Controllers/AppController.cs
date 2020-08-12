@@ -61,5 +61,13 @@ namespace urunKovaniApi.Controllers
             return appSettings;
         }
 
+        [Route("top_stores_shops"), HttpGet]
+        public async Task<List<Shops>> TopStoresShops()
+        {
+            var topStoresShops = await _appOperation.TopStoresShops();
+
+            return topStoresShops;
+        }
+
     }
 }

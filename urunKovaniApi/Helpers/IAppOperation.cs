@@ -11,9 +11,9 @@ namespace urunKovaniApi.Helpers
     public interface IAppOperation
     {
         Task<List<Categories>> SideMenu(int id);
-
         Task<List<Categories>> MainMenu(int id);
         Task<List<AppSettings>> AppSettings(int id);
+        Task<List<Shops>> TopStoresShops();
 
 
     }
