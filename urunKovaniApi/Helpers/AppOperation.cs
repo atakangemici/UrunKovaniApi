@@ -45,5 +45,12 @@ namespace urunKovaniApi.Helpers
 
             return topStoresShops;
         }
+
+        public async Task<Shops> GetShop(int id)
+        {
+            var shopInfo = await _dbContext.Shops.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            return shopInfo;
+        }
     }
 }
