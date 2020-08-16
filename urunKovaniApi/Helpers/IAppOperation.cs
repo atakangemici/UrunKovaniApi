@@ -14,7 +14,9 @@ namespace urunKovaniApi.Helpers
         Task<List<Categories>> MainMenu(int id);
         Task<List<AppSettings>> AppSettings(int id);
         Task<List<Shops>> TopStoresShops();
-        Task<Shops> GetShop(int id);
+        Task<Shops> GetShop(int id); //shopId
+        Task<List<Products>> GetShopsProducts(int id);// shopsId 
+        Task<List<Products>> SortShopsProducts(int id, int sortId);// shopsId 
 
 
     }

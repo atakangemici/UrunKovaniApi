@@ -77,5 +77,23 @@ namespace urunKovaniApi.Controllers
             return topStoresShops;
         }
 
+
+        [Route("get_shops_products/{id:int}"), HttpGet]
+        public async Task<List<Products>> GetShopsProducts(int id)
+        {
+            var products = await _appOperation.GetShopsProducts(id);
+
+            return products;
+        }
+
+
+        [Route("sort_shops_products"), HttpGet]
+        public async Task<List<Products>> SortShopProducts(int id, int sortId)
+        {
+            var products = await _appOperation.SortShopsProducts(id,sortId);
+
+            return products;
+        }
+
     }
 }
