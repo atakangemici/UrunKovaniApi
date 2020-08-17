@@ -33,7 +33,12 @@ namespace urunKovaniApi.Controllers
             if (!registerResponse)
                 return BadRequest();
 
-            return Ok();
+            var registeredUser = await _authOperation.GetCurrentUser((string)data["email"]);
+
+            if (registeredUser == null)
+                return BadRequest();
+
+            return registeredUser;
         }
 
         [Route("login"), HttpPost]
@@ -44,12 +49,12 @@ namespace urunKovaniApi.Controllers
             if (!loginResponse)
                 return BadRequest();
 
-            var registerResponse = await _authOperation.GetCurrentUser((string)data["email"]);
+            var loggedUser = await _authOperation.GetCurrentUser((string)data["email"]);
 
-            if(registerResponse == null)
+            if(loggedUser == null)
                 return BadRequest();
 
-            return registerResponse;
+            return loggedUser;
            
         }
 
