@@ -29,6 +29,7 @@ namespace urunKovaniApi.Helpers
 
     public interface IAuthOperation
     {
-  
+        
+        string selam();
     }
 }

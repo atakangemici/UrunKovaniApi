@@ -10,22 +10,21 @@ using System.Threading.Tasks;
 using urunKovaniApi;
 using urunKovaniApi.Models;
 
-//namespace urunKovaniApi.Helpers
-//{
-//    public class AuthOperation : IAuthOperation
-//    {
-//        private readonly UrunKovaniContext _dbContext;
+namespace urunKovaniApi.Helpers
+{
+    public class AuthOperation : IAuthOperation
+    {
+        private readonly UrunKovaniContext _dbContext;
 
-//        public AuthOperation(UrunKovaniContext dbContext)
-//        {
-//            _dbContext = dbContext;
-//        }
+        public AuthOperation(UrunKovaniContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
-      
 
-//        public string selam()
-//        {
-//            return "hellowwwwww";
-//        }
-//    }
-//}
+        public string selam()
+        {
+            return "hellowwwwww";
+        }
+    }
+}
