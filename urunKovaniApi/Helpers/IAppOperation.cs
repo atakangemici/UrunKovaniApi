@@ -20,4 +20,9 @@ namespace urunKovaniApi.Helpers
 
 
     }
+
+    public interface IAuthOperation
+    {
+        Task<Users> Register(string name, string lastname, string email, string password);
+    }
 }
