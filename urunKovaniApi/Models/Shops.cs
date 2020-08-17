@@ -34,7 +34,7 @@ namespace urunKovaniApi.Models
 
 
         public virtual SystemCategories SystemCategory { get; set; }
-        public virtual List<ShopCategories> Category { get; set; }
+        public virtual List<ShopCategories> ShopCategory { get; set; }
 
     }
 }
