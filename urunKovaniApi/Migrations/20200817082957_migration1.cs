@@ -4,16 +4,17 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace urunKovaniApi.Migrations
 {
-    public partial class initial : Migration
+    public partial class migration1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AdminUser",
+                name: "AdminUsers",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    owner = table.Column<int>(nullable: true),
                     created_by = table.Column<int>(nullable: true),
                     updated_by = table.Column<int>(nullable: true),
                     created_at = table.Column<DateTime>(nullable: false),
@@ -28,7 +29,27 @@ namespace urunKovaniApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AdminUser", x => x.id);
+                    table.PrimaryKey("PK_AdminUsers", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AppSettings",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    owner = table.Column<int>(nullable: true),
+                    created_by = table.Column<int>(nullable: true),
+                    updated_by = table.Column<int>(nullable: true),
+                    created_at = table.Column<DateTime>(nullable: false),
+                    updated_at = table.Column<DateTime>(nullable: true),
+                    deleted = table.Column<bool>(nullable: false),
+                    key = table.Column<int>(nullable: false),
+                    content = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppSettings", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -37,6 +58,7 @@ namespace urunKovaniApi.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    owner = table.Column<int>(nullable: true),
                     created_by = table.Column<int>(nullable: true),
                     updated_by = table.Column<int>(nullable: true),
                     created_at = table.Column<DateTime>(nullable: false),
@@ -64,6 +86,7 @@ namespace urunKovaniApi.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    owner = table.Column<int>(nullable: true),
                     created_by = table.Column<int>(nullable: true),
                     updated_by = table.Column<int>(nullable: true),
                     created_at = table.Column<DateTime>(nullable: false),
@@ -79,34 +102,33 @@ namespace urunKovaniApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EmployeeUserteriUser",
+                name: "Likes",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    owner = table.Column<int>(nullable: true),
                     created_by = table.Column<int>(nullable: true),
                     updated_by = table.Column<int>(nullable: true),
                     created_at = table.Column<DateTime>(nullable: false),
                     updated_at = table.Column<DateTime>(nullable: true),
                     deleted = table.Column<bool>(nullable: false),
-                    name = table.Column<string>(nullable: true),
-                    surename = table.Column<string>(nullable: true),
-                    address = table.Column<string>(nullable: true),
-                    phone = table.Column<string>(nullable: true),
-                    email = table.Column<string>(nullable: true),
-                    password = table.Column<string>(nullable: true)
+                    employee_id = table.Column<int>(nullable: false),
+                    shop_id = table.Column<int>(nullable: false),
+                    product_id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmployeeUserteriUser", x => x.id);
+                    table.PrimaryKey("PK_Likes", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Order",
+                name: "Orders",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    owner = table.Column<int>(nullable: true),
                     created_by = table.Column<int>(nullable: true),
                     updated_by = table.Column<int>(nullable: true),
                     created_at = table.Column<DateTime>(nullable: false),
@@ -121,15 +143,16 @@ namespace urunKovaniApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Order", x => x.id);
+                    table.PrimaryKey("PK_Orders", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ShopCategory",
+                name: "SystemCategories",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    owner = table.Column<int>(nullable: true),
                     created_by = table.Column<int>(nullable: true),
                     updated_by = table.Column<int>(nullable: true),
                     created_at = table.Column<DateTime>(nullable: false),
@@ -139,7 +162,31 @@ namespace urunKovaniApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ShopCategory", x => x.id);
+                    table.PrimaryKey("PK_SystemCategories", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    owner = table.Column<int>(nullable: true),
+                    created_by = table.Column<int>(nullable: true),
+                    updated_by = table.Column<int>(nullable: true),
+                    created_at = table.Column<DateTime>(nullable: false),
+                    updated_at = table.Column<DateTime>(nullable: true),
+                    deleted = table.Column<bool>(nullable: false),
+                    name = table.Column<string>(nullable: true),
+                    surename = table.Column<string>(nullable: true),
+                    address = table.Column<string>(nullable: true),
+                    phone = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true),
+                    password = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -148,6 +195,7 @@ namespace urunKovaniApi.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    owner = table.Column<int>(nullable: true),
                     created_by = table.Column<int>(nullable: true),
                     updated_by = table.Column<int>(nullable: true),
                     created_at = table.Column<DateTime>(nullable: false),
@@ -159,38 +207,42 @@ namespace urunKovaniApi.Migrations
                     work_hours = table.Column<string>(nullable: true),
                     shop_phone = table.Column<string>(nullable: true),
                     min_order_price = table.Column<double>(nullable: false),
-                    ShopCategoryId = table.Column<int>(nullable: true)
+                    top_stores = table.Column<bool>(nullable: false),
+                    image = table.Column<string>(nullable: true),
+                    SystemCategoryId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Shops", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Shops_ShopCategory_ShopCategoryId",
-                        column: x => x.ShopCategoryId,
-                        principalTable: "ShopCategory",
+                        name: "FK_Shops_SystemCategories_SystemCategoryId",
+                        column: x => x.SystemCategoryId,
+                        principalTable: "SystemCategories",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "ShopCategories",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    owner = table.Column<int>(nullable: true),
                     created_by = table.Column<int>(nullable: true),
                     updated_by = table.Column<int>(nullable: true),
                     created_at = table.Column<DateTime>(nullable: false),
                     updated_at = table.Column<DateTime>(nullable: true),
                     deleted = table.Column<bool>(nullable: false),
                     category_name = table.Column<string>(nullable: true),
-                    ShopId = table.Column<int>(nullable: false)
+                    ShopId = table.Column<int>(nullable: false),
+                    url = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.id);
+                    table.PrimaryKey("PK_ShopCategories", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Categories_Shops_ShopId",
+                        name: "FK_ShopCategories_Shops_ShopId",
                         column: x => x.ShopId,
                         principalTable: "Shops",
                         principalColumn: "id",
@@ -203,6 +255,7 @@ namespace urunKovaniApi.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    owner = table.Column<int>(nullable: true),
                     created_by = table.Column<int>(nullable: true),
                     updated_by = table.Column<int>(nullable: true),
                     created_at = table.Column<DateTime>(nullable: false),
@@ -218,17 +271,12 @@ namespace urunKovaniApi.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId",
+                        name: "FK_Products_ShopCategories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Categories",
+                        principalTable: "ShopCategories",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Categories_ShopId",
-                table: "Categories",
-                column: "ShopId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
@@ -236,15 +284,23 @@ namespace urunKovaniApi.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shops_ShopCategoryId",
+                name: "IX_ShopCategories_ShopId",
+                table: "ShopCategories",
+                column: "ShopId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Shops_SystemCategoryId",
                 table: "Shops",
-                column: "ShopCategoryId");
+                column: "SystemCategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AdminUser");
+                name: "AdminUsers");
+
+            migrationBuilder.DropTable(
+                name: "AppSettings");
 
             migrationBuilder.DropTable(
                 name: "Basket");
@@ -253,22 +309,25 @@ namespace urunKovaniApi.Migrations
                 name: "Complaints");
 
             migrationBuilder.DropTable(
-                name: "EmployeeUserteriUser");
+                name: "Likes");
 
             migrationBuilder.DropTable(
-                name: "Order");
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "ShopCategories");
 
             migrationBuilder.DropTable(
                 name: "Shops");
 
             migrationBuilder.DropTable(
-                name: "ShopCategory");
+                name: "SystemCategories");
         }
     }
 }

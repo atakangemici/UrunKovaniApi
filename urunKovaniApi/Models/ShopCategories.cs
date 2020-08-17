@@ -11,7 +11,15 @@ namespace urunKovaniApi.Models
         [Column("category_name")]
         public string CategoryName { get; set; }
 
-        public virtual ICollection<Shops> Shops { get; set; }
+        public int ShopId { get; set; }
+
+        [Column("url")]
+        public string Url { get; set; }
+
+        [ForeignKey("ShopId")]
+        public Shops Shop { get; set; }
+
+        public List<Products> Product { get; set; }
 
 
     }

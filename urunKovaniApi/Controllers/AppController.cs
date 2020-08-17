@@ -38,7 +38,7 @@ namespace urunKovaniApi.Controllers
         }
 
         [Route("side_menu/{id:int}"), HttpGet]
-        public async Task<List<Categories>> SideMenu(int id)
+        public async Task<List<ShopCategories>> SideMenu(int id)
         {
             var sideMenu = await _appOperation.SideMenu(id);
 
@@ -46,7 +46,7 @@ namespace urunKovaniApi.Controllers
         }
 
         [Route("main_menu/{id:int}"), HttpGet]
-        public async Task<List<Categories>> MainMenu(int id)
+        public async Task<List<ShopCategories>> MainMenu(int id)
         {
             var mainMenu = await _appOperation.MainMenu(id);
 
@@ -93,6 +93,22 @@ namespace urunKovaniApi.Controllers
             var products = await _appOperation.SortShopsProducts(id,sortId);
 
             return products;
+        }
+
+        [Route("all_shops"), HttpGet]
+        public async Task<List<Shops>> AllShops()
+        {
+            var allShops = await _appOperation.AllShops();
+
+            return allShops;
+        }
+
+        [Route("shop_categories"), HttpGet]
+        public async Task<List<ShopCategories>> ShopCategories()
+        {
+            var shopCategories = await _appOperation.ShopCategories();
+
+            return shopCategories;
         }
 
     }
