@@ -63,7 +63,7 @@ namespace urunKovaniApi
             services.AddDbContext<UrunKovaniContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<IAppOperation, AppOperation>();
+            services.AddScoped<IAppOperation, AppRepository>();
             services.AddScoped<IAuthOperation, AuthOperation>();
         }
 

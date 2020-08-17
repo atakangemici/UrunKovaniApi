@@ -9,11 +9,11 @@ using urunKovaniApi.Models;
 
 namespace urunKovaniApi.Helpers
 {
-    public class AppOperation : IAppOperation
+    public class AppRepository : IAppOperation
     {
         private readonly UrunKovaniContext _dbContext;
 
-        public AppOperation(UrunKovaniContext dbContext)
+        public AppRepository(UrunKovaniContext dbContext)
         {
             _dbContext = dbContext;
         }
