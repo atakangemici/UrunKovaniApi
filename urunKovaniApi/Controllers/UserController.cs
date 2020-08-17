@@ -44,7 +44,13 @@ namespace urunKovaniApi.Controllers
             if (!loginResponse)
                 return BadRequest();
 
-            return Ok();
+            var registerResponse = await _authOperation.GetCurrentUser((string)data["email"]);
+
+            if(registerResponse == null)
+                return BadRequest();
+
+            return registerResponse;
+           
         }
 
     }

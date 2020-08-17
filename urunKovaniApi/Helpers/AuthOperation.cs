@@ -75,5 +75,13 @@ namespace urunKovaniApi.Helpers
             return true;
 
         }
+
+        public async Task<Users> GetCurrentUser(string email)
+        {
+            var isUserAlreadyHave = await _dbContext.Users.Where(x => x.Email == email).FirstOrDefaultAsync();
+
+            return isUserAlreadyHave;
+        }
+
     }
 }

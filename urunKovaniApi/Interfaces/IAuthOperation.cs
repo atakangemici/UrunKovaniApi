@@ -13,6 +13,9 @@ namespace urunKovaniApi.Helpers
         Task<bool> Register(JObject data);
 
         Task<bool> Login(JObject data);
-        
+
+        Task<Users> GetCurrentUser(string email);
+
+
     }
 }
