@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using urunKovaniApi;
 
 namespace urunKovaniApi.Migrations
 {
     [DbContext(typeof(UrunKovaniContext))]
-    partial class UrunKovaniContextModelSnapshot : ModelSnapshot
+    [Migration("20200817074053_migration12")]
+    partial class migration12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -161,6 +163,46 @@ namespace urunKovaniApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Basket");
+                });
+
+            modelBuilder.Entity("urunKovaniApi.Models.Categories", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnName("category_name");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnName("created_at");
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnName("created_by");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnName("deleted");
+
+                    b.Property<int?>("Owner")
+                        .HasColumnName("owner");
+
+                    b.Property<int>("ShopId");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnName("updated_at");
+
+                    b.Property<int?>("UpdatedById")
+                        .HasColumnName("updated_by");
+
+                    b.Property<string>("Url")
+                        .HasColumnName("url");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShopId");
+
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("urunKovaniApi.Models.Complaints", b =>
@@ -335,46 +377,6 @@ namespace urunKovaniApi.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("urunKovaniApi.Models.ShopCategories", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("id")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CategoryName")
-                        .HasColumnName("category_name");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnName("created_at");
-
-                    b.Property<int?>("CreatedById")
-                        .HasColumnName("created_by");
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnName("deleted");
-
-                    b.Property<int?>("Owner")
-                        .HasColumnName("owner");
-
-                    b.Property<int>("ShopId");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnName("updated_at");
-
-                    b.Property<int?>("UpdatedById")
-                        .HasColumnName("updated_by");
-
-                    b.Property<string>("Url")
-                        .HasColumnName("url");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ShopId");
-
-                    b.ToTable("Categories");
-                });
-
             modelBuilder.Entity("urunKovaniApi.Models.Shops", b =>
                 {
                     b.Property<int>("Id")
@@ -406,13 +408,13 @@ namespace urunKovaniApi.Migrations
                     b.Property<string>("ShopAddress")
                         .HasColumnName("shop_address");
 
+                    b.Property<int?>("ShopCategoryId");
+
                     b.Property<string>("ShopName")
                         .HasColumnName("shop_name");
 
                     b.Property<string>("ShopPhone")
                         .HasColumnName("shop_phone");
-
-                    b.Property<int?>("SystemCategoryId");
 
                     b.Property<bool>("TopStores")
                         .HasColumnName("top_stores");
@@ -428,7 +430,7 @@ namespace urunKovaniApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SystemCategoryId");
+                    b.HasIndex("ShopCategoryId");
 
                     b.ToTable("Shops");
                 });
@@ -514,27 +516,27 @@ namespace urunKovaniApi.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("urunKovaniApi.Models.Categories", b =>
+                {
+                    b.HasOne("urunKovaniApi.Models.Shops", "Shop")
+                        .WithMany("Categorie")
+                        .HasForeignKey("ShopId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("urunKovaniApi.Models.Products", b =>
                 {
-                    b.HasOne("urunKovaniApi.Models.ShopCategories", "Category")
+                    b.HasOne("urunKovaniApi.Models.Categories", "Category")
                         .WithMany("Product")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("urunKovaniApi.Models.ShopCategories", b =>
-                {
-                    b.HasOne("urunKovaniApi.Models.Shops", "Shop")
-                        .WithMany("Category")
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("urunKovaniApi.Models.Shops", b =>
                 {
-                    b.HasOne("urunKovaniApi.Models.SystemCategories", "SystemCategory")
+                    b.HasOne("urunKovaniApi.Models.SystemCategories", "ShopCategory")
                         .WithMany("Shops")
-                        .HasForeignKey("SystemCategoryId");
+                        .HasForeignKey("ShopCategoryId");
                 });
 #pragma warning restore 612, 618
         }

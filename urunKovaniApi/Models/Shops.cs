@@ -33,8 +33,8 @@ namespace urunKovaniApi.Models
         public string Image { get; set; }
 
 
-        public virtual ShopCategories ShopCategory { get; set; }
-        public virtual List<Categories> Categorie { get; set; }
+        public virtual SystemCategories SystemCategory { get; set; }
+        public virtual List<ShopCategories> Category { get; set; }
 
     }
 }

@@ -8,13 +8,13 @@ namespace urunKovaniApi
     {
         public DbSet<Shops> Shops { get; set; }
         public DbSet<AdminUsers> AdminUsers { get; set; }
-        public DbSet<Categories> Categories { get; set; }
+        public DbSet<ShopCategories> Categories { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<Complaints> Complaints { get; set; }
         public DbSet<Basket> Basket { get; set; }
         public DbSet<Orders> Orders { get; set; }
         public DbSet<Products> Products { get; set; }
-        public DbSet<ShopCategories> ShopCategories { get; set; }
+        public DbSet<SystemCategories> ShopCategories { get; set; }
         public DbSet<AppSettings> AppSettings { get; set; }
         public DbSet<Likes> Likes { get; set; }
 

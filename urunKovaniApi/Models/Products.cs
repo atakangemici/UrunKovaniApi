@@ -23,7 +23,7 @@ namespace urunKovaniApi.Models
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
-        public virtual Categories Category { get; set; }
+        public virtual ShopCategories Category { get; set; }
 
     }
 }

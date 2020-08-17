@@ -18,14 +18,14 @@ namespace urunKovaniApi.Helpers
             _dbContext = dbContext;
         }
 
-        public async Task<List<Categories>> SideMenu(int id)
+        public async Task<List<ShopCategories>> SideMenu(int id)
         {
             var sideMenus = await _dbContext.Categories.Where(x => x.ShopId == id).ToListAsync();
 
             return sideMenus;
         }
 
-        public async Task<List<Categories>> MainMenu(int id)
+        public async Task<List<ShopCategories>> MainMenu(int id)
         {
             var mainMenu = await _dbContext.Categories.Where(x => x.ShopId == id).ToListAsync();
 
@@ -83,7 +83,7 @@ namespace urunKovaniApi.Helpers
             return allShops;
         }
 
-        public async Task<List<ShopCategories>> ShopCategories()
+        public async Task<List<SystemCategories>> ShopCategories()
         {
             var shopCategories = await _dbContext.ShopCategories.Where(x => x.Deleted == false).ToListAsync();
 
