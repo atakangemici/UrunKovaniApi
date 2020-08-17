@@ -69,5 +69,21 @@ namespace urunKovaniApi.Controllers
             return topStoresShops;
         }
 
+        [Route("all_shops"), HttpGet]
+        public async Task<List<Shops>> AllShops()
+        {
+            var allShops = await _appOperation.AllShops();
+
+            return allShops;
+        }
+
+        [Route("shop_categories"), HttpGet]
+        public async Task<List<ShopCategories>> ShopCategories()
+        {
+            var shopCategories = await _appOperation.ShopCategories();
+
+            return shopCategories;
+        }
+
     }
 }
