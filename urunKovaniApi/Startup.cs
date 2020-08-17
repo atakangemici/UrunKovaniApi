@@ -64,6 +64,7 @@ namespace urunKovaniApi
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IAppOperation, AppOperation>();
+            services.AddScoped<IAuthOperation, AuthOperation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

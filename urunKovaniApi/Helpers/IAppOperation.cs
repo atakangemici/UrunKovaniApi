@@ -21,5 +21,15 @@ namespace urunKovaniApi.Helpers
         Task<List<Products>> SortShopsProducts(int id, int sortId);// shopsId 
 
 
+        //Ardanın method
+        Task<Users> Register(JObject data);
+
+
+    }
+
+    public interface IAuthOperation
+    {
+        
+        string selam();
     }
 }
