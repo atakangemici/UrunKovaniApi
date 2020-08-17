@@ -90,7 +90,7 @@ namespace urunKovaniApi.Controllers
         [Route("sort_shops_products"), HttpGet]
         public async Task<List<Products>> SortShopProducts(int id, int sortId)
         {
-            var products = await _appOperation.SortShopsProducts(id,sortId);
+            var products = await _appOperation.SortShopsProducts(id, sortId);
 
             return products;
         }
@@ -103,12 +103,20 @@ namespace urunKovaniApi.Controllers
             return allShops;
         }
 
-        [Route("shop_categories"), HttpGet]
-        public async Task<List<ShopCategories>> ShopCategories()
+        [Route("shop_and_system_categories"), HttpGet]
+        public async Task<List<Shops>> ShopsAndSystemCategories()
         {
-            var shopCategories = await _appOperation.ShopCategories();
-            
-            return shopCategories;
+            var shopsAndSystemCategories = await _appOperation.ShopsAndSystemCategories();
+
+            return shopsAndSystemCategories;
+        }
+
+        [Route("system_categories"), HttpGet]
+        public async Task<List<SystemCategories>> SystemCategories()
+        {
+            var systemCategories = await _appOperation.SystemCategories();
+
+            return systemCategories;
         }
 
     }

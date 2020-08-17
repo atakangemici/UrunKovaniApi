@@ -86,11 +86,24 @@ namespace urunKovaniApi.Helpers
             return allShops;
         }
 
-        public async Task<List<ShopCategories>> ShopCategories()
+        public async Task<List<Shops>> ShopsAndSystemCategories()
         {
-            var shopCategories = await _dbContext.ShopCategories.Where(x => x.Deleted == false).ToListAsync();
+            var shopsAndSystemCategories = await _dbContext.Shops.Where(x => x.Deleted == false)
+                .Include(x => x.SystemCategory)
+                .Include(y => y.ShopCategory)
+                .ThenInclude(z => z.Product)
+                .ToListAsync();
 
-            return shopCategories;
+            return shopsAndSystemCategories;
+        }
+
+        public async Task<List<SystemCategories>> SystemCategories()
+        {
+            var systemCategories = await _dbContext.SystemCategories.Where(x => x.Deleted == false)
+                .Include(x => x.Shops)
+                .ToListAsync();
+
+            return systemCategories;
         }
 
     }
