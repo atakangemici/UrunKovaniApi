@@ -46,6 +46,36 @@ namespace urunKovaniApi.Helpers
             return topStoresShops;
         }
 
+        public async Task<Shops> GetShop(int id)
+        {
+            var shopInfo = await _dbContext.Shops.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            return shopInfo;
+        }
+
+        public Task<List<Products>> GetShopsProducts(int id)
+        {
+            var products = _dbContext.Products.Include(x=>x.Category).ThenInclude(y=>y.Product).Where(xy=>xy.Category.ShopId==id).ToListAsync();
+           
+            return products;
+        }
+
+        public Task<List<Products>> SortShopsProducts(int id,int sortId)
+        {
+
+            if (sortId == 0)
+            {
+                var products = _dbContext.Products.OrderBy(c => c.Price).Include(x => x.Category).ThenInclude(y => y.Product).Where(xy => xy.Category.ShopId == id).ToListAsync();
+                return products;
+            }
+            else
+            {
+                var products = _dbContext.Products.OrderByDescending(c => c.Price).Include(x => x.Category).ThenInclude(y => y.Product).Where(xy => xy.Category.ShopId == id).ToListAsync();
+
+                return products;
+            }
+        }
+
         public async Task<List<Shops>> AllShops()
         {
             var allShops = await _dbContext.Shops.Where(x => x.Deleted == false).ToListAsync();
