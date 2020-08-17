@@ -8,8 +8,8 @@ namespace urunKovaniApi.Models
 {
     public class Products : BaseEntity
     {
-        [Column("shop_name")]
-        public string ShopName { get; set; }
+        [Column("name")]
+        public string Name { get; set; }
 
         [Column("price")]
         public double Price { get; set; }
@@ -23,7 +23,7 @@ namespace urunKovaniApi.Models
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
-        public virtual ShopCategories Category { get; set; }
+        public virtual ShopCategories ShopCategory { get; set; }
 
     }
 }
