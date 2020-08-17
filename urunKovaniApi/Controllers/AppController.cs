@@ -104,7 +104,7 @@ namespace urunKovaniApi.Controllers
         }
 
         [Route("shop_categories"), HttpGet]
-        public async Task<List<SystemCategories>> ShopCategories()
+        public async Task<List<ShopCategories>> ShopCategories()
         {
             var shopCategories = await _appOperation.ShopCategories();
 

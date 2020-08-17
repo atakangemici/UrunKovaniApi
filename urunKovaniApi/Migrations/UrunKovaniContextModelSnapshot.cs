@@ -372,7 +372,7 @@ namespace urunKovaniApi.Migrations
 
                     b.HasIndex("ShopId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("ShopCategories");
                 });
 
             modelBuilder.Entity("urunKovaniApi.Models.Shops", b =>
@@ -463,7 +463,7 @@ namespace urunKovaniApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ShopCategories");
+                    b.ToTable("SystemCategories");
                 });
 
             modelBuilder.Entity("urunKovaniApi.Models.Users", b =>
