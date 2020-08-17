@@ -90,43 +90,5 @@ namespace urunKovaniApi.Helpers
             return shopCategories;
         }
 
-
-
-        public async Task<Users> Register(JObject data)
-        {
-            //var returnModel = new JObject();
-            //returnModel["error"] = false;
-            //returnModel["message"] = "";
-
-            string name = (string)data["name"];
-            string lastname = (string)data["lastname"];
-            string email = (string)data["email"];
-            string password = (string)data["password"];
-
-            var isUserAlreadyHave = await _dbContext.Users.Where(x => x.Email == email).FirstOrDefaultAsync();
-
-            if (isUserAlreadyHave == null)
-            {
-
-                Users registerUser = new Users();
-                registerUser.Name = name;
-                registerUser.SureName = lastname;
-                registerUser.Email = email;
-                registerUser.Password = password;
-
-                _dbContext.Users.Add(registerUser);
-
-                await _dbContext.SaveChangesAsync();
-
-                return registerUser;
-            }
-            else
-            {
-
-                return new Users();
-                // User kayıtlı olduğundan user login olmalı diye dönüş olmalı
-            }
-
-        }
     }
 }

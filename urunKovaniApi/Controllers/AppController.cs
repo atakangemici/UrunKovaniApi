@@ -107,19 +107,9 @@ namespace urunKovaniApi.Controllers
         public async Task<List<ShopCategories>> ShopCategories()
         {
             var shopCategories = await _appOperation.ShopCategories();
-
+            
             return shopCategories;
         }
-
-
-        [Route("register"), HttpPost]
-        public async Task<ActionResult<Users>> ShopCategories([FromBody] JObject data)
-        {
-            var registerResponse = await _appOperation.Register(data);
-
-            return registerResponse;
-        }
-
 
     }
 }

@@ -25,14 +25,20 @@ namespace urunKovaniApi.Controllers
             _authOperation = authOperation;
         }
 
-        [Route("selam"), HttpPost]
-        public string Selam()
+        [Route("register"), HttpPost]
+        public async Task<ActionResult<Users>> Register([FromBody] JObject data)
         {
+            var registerResponse = await _authOperation.Register(data);
 
-            var response = _authOperation.selam();
+            return registerResponse;
+        }
 
-            return response;
+        [Route("login"), HttpPost]
+        public async Task<ActionResult<Users>> Login([FromBody] JObject data)
+        {
+            var loginResponse = await _authOperation.Login(data);
 
+            return loginResponse;
         }
 
     }
