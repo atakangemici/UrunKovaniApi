@@ -30,7 +30,10 @@ namespace urunKovaniApi.Controllers
         {
             var registerResponse = await _authOperation.Register(data);
 
-            return registerResponse;
+            if (!registerResponse)
+                return BadRequest();
+
+            return Ok();
         }
 
         [Route("login"), HttpPost]
@@ -38,7 +41,10 @@ namespace urunKovaniApi.Controllers
         {
             var loginResponse = await _authOperation.Login(data);
 
-            return loginResponse;
+            if (!loginResponse)
+                return BadRequest();
+
+            return Ok();
         }
 
     }

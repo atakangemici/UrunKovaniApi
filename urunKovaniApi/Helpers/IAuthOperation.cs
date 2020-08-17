@@ -10,9 +10,9 @@ namespace urunKovaniApi.Helpers
 {
     public interface IAuthOperation
     {
-        Task<Users> Register(JObject data);
+        Task<bool> Register(JObject data);
 
-        Task<Users> Login(JObject data);
+        Task<bool> Login(JObject data);
         
     }
 }

@@ -21,7 +21,7 @@ namespace urunKovaniApi.Helpers
             _dbContext = dbContext;
         }
 
-        public async Task<Users> Register(JObject data)
+        public async Task<bool> Register(JObject data)
         {
             //var returnModel = new JObject();
             //returnModel["error"] = false;
@@ -47,18 +47,16 @@ namespace urunKovaniApi.Helpers
 
                 await _dbContext.SaveChangesAsync();
 
-                return registerUser;
+                return true;
             }
             else
             {
-                // badrequest dönmemiz lazm return de yemiyo hiç bişey
-                return new Users();
-                // User kayıtlı olduğundan user login olmalı diye dönüş olmalı
+                return false;
             }
 
         }
 
-        public async Task<Users> Login(JObject data)
+        public async Task<bool> Login(JObject data)
         {
             string email = (string)data["email"];
             string password = (string)data["password"];
@@ -71,10 +69,10 @@ namespace urunKovaniApi.Helpers
             {
                 returnModel["error"] = true;
                 returnModel["message"] = "Kullanıcı Tanımlı Değil";
-                // return olmuyo badrequest dönememiz lazım
+                return false;
             }
       
-            return isUserAlreadyHave;
+            return true;
 
         }
     }
