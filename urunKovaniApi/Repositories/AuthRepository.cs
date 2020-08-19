@@ -63,7 +63,7 @@ namespace urunKovaniApi.Helpers
 
             var returnModel = new JObject();
 
-            var isUserAlreadyHave = await _dbContext.Users.Where(x => x.Email == email).FirstOrDefaultAsync();
+            var isUserAlreadyHave = await _dbContext.Users.Where(x => x.Email == email && x.Password == (string)password).FirstOrDefaultAsync();
 
             if (isUserAlreadyHave == null)
             {
