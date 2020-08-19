@@ -17,6 +17,7 @@ namespace urunKovaniApi
         public DbSet<SystemCategories> SystemCategories { get; set; }
         public DbSet<AppSettings> AppSettings { get; set; }
         public DbSet<Likes> Likes { get; set; }
+        public DbSet<Comments> Comments { get; set; }
 
 
         public UrunKovaniContext(DbContextOptions<UrunKovaniContext> options) : base(options)
